@@ -18,6 +18,12 @@ declare namespace fastifyKafkaJS {
          * KafkaJS producer config
          */
         producerConfig?: ProducerConfig;
+        /**
+         * Ignore the default onClose handled which closes the producer
+         * If set to true, you will have to manage closing the producer yourself
+         * @default false
+         */
+        ignoreOnClose?: boolean;
     }
 }
 
