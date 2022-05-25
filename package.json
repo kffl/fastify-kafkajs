@@ -4,7 +4,7 @@
   "description": "Fastify plugin that adds support for KafkaJS - a modern Apache Kafka client ",
   "main": "index.js",
   "scripts": {
-    "test": "jest && tsd",
+    "test": "jest --coverage && tsd",
     "format": "prettier --write '**/*.{js,ts}'"
   },
   "repository": {
