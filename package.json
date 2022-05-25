@@ -1,0 +1,36 @@
+{
+  "name": "fastify-kafkajs",
+  "version": "0.1.0",
+  "description": "Fastify plugin that adds support for KafkaJS - a modern Apache Kafka client ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest && tsd",
+    "format": "prettier --write '**/*.{js,ts}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kffl/fastify-kafkajs.git"
+  },
+  "keywords": [
+    "kafka",
+    "fastify",
+    "kafkajs"
+  ],
+  "author": "Paweł Kuffel <pawel@kuffel.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kffl/fastify-kafkajs/issues"
+  },
+  "homepage": "https://github.com/kffl/fastify-kafkajs#readme",
+  "devDependencies": {
+    "fastify": "^3.29.0",
+    "jest": "^28.1.0",
+    "prettier": "^2.6.2",
+    "tsd": "^0.20.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "fastify-plugin": "^3.0.1",
+    "kafkajs": "^2.0.1"
+  }
+}
