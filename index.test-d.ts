@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify';
 import Fastify from 'fastify';
 import fastifyKafkaJS from '.';
 import { expectAssignable, expectType } from 'tsd';
-import { Kafka, Producer, ProducerConfig } from 'kafkajs';
+import { Consumer, Kafka, Producer, ProducerConfig } from 'kafkajs';
 
 const app: FastifyInstance = Fastify();
 
@@ -16,4 +16,7 @@ app.after(() => {
 
     expectAssignable<Kafka>(app.kafka.client);
     expectType<fastifyKafkaJS.FastifyKafkaJSClient>(app.kafka.client);
+
+    expectAssignable<Consumer[]>(app.kafka.consumers);
+    expectType<fastifyKafkaJS.FastifyKafkaJSConsumer[]>(app.kafka.consumers);
 });

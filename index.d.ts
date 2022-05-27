@@ -1,9 +1,25 @@
 import { FastifyPluginAsync } from 'fastify';
-import { Kafka, KafkaConfig, Producer, ProducerConfig } from 'kafkajs';
+import {
+    Consumer,
+    ConsumerConfig,
+    ConsumerRunConfig,
+    ConsumerSubscribeTopic,
+    ConsumerSubscribeTopics,
+    Kafka,
+    KafkaConfig,
+    Producer,
+    ProducerConfig
+} from 'kafkajs';
 
 declare namespace fastifyKafkaJS {
     type FastifyKafkaJSClient = Kafka;
     type FastifyKafkaJSProducer = Producer;
+    type FastifyKafkaJSConsumer = Consumer;
+    type FastifyKafkaJSConsumerDeclaration = {
+        consumerConfig: ConsumerConfig;
+        subscription: ConsumerSubscribeTopics | ConsumerSubscribeTopic;
+        runConfig: ConsumerRunConfig;
+    };
 
     interface FastifyKafkaJSOptions {
         /**
@@ -13,14 +29,20 @@ declare namespace fastifyKafkaJS {
          *   clientId: 'fastify-kafkajs'
          * }
          */
-        config?: KafkaConfig;
+        clientConfig?: KafkaConfig;
         /**
          * KafkaJS producer config
          */
         producerConfig?: ProducerConfig;
         /**
+         * Array of objects describing consumers
+         * @default []
+         */
+        consumers?: FastifyKafkaJSConsumerDeclaration[];
+        /**
          * Ignore the default onClose handled which closes the producer
-         * If set to true, you will have to manage closing the producer yourself
+         * and all consumers. If set to true, you will have to manage
+         * closing the producer and the consumers yourself.
          * @default false
          */
         ignoreOnClose?: boolean;
@@ -32,6 +54,7 @@ declare module 'fastify' {
         kafka: {
             client: fastifyKafkaJS.FastifyKafkaJSClient;
             producer: fastifyKafkaJS.FastifyKafkaJSProducer;
+            consumers: fastifyKafkaJS.FastifyKafkaJSConsumer[];
         };
     }
 }
