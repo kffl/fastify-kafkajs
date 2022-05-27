@@ -14,14 +14,18 @@ async function fastifyKafkaJS(fastify, options) {
 
     const kafka = new Kafka(actualOptions.config);
 
+    const logger = fastify.log.child({plugin: 'fastify-kafkajs' })
+
     fastify.addHook('onClose', async () => {
         if (!actualOptions.ignoreOnClose) {
+            logger.info('disconnecting producer')
             await producer.disconnect();
         }
     });
 
     const producer = kafka.producer(actualOptions.producerConfig);
 
+    logger.info('connecting producer')
     await producer.connect();
 
     fastify.decorate('kafka', {
