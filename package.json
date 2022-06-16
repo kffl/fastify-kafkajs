@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/kffl/fastify-kafkajs#readme",
   "devDependencies": {
-    "fastify": "^3.29.0",
+    "fastify": "^4.0.3",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "tsd": "^0.20.0",
