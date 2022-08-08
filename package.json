@@ -30,7 +30,7 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "fastify-plugin": "^3.0.1",
+    "fastify-plugin": "^4.1.0",
     "kafkajs": "^2.0.1"
   }
 }
